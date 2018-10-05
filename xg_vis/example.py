@@ -1,17 +1,16 @@
-import pandas as pd
 import numpy as np
-from hyperopt import hp, tpe, fmin, space_eval, Trials
 import xgboost as xgb
-from sklearn.metrics import roc_auc_score
+from hyperopt import hp, tpe, fmin, Trials
 from sklearn.datasets import load_iris
-from xg_vis.classes import HyperparametersVis
+from sklearn.metrics import roc_auc_score
 
+from xg_vis.vis import HyperparametersVis
 
 # load data
 data = load_iris()
 X = data['data']
 y = data['target']
-y = np.array([int(y==1) for y in y])
+y = np.array([round(np.random.rand()) for y in y])
 
 # run xgb
 xgb_data = xgb.DMatrix(X, y)
