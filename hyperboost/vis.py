@@ -1,11 +1,11 @@
 import seaborn as sns
 import pandas as pd
-from hyperopt import space_eval
+from hyperopt import space_eval, Trials
 from matplotlib import pyplot as plt
 
 
 class HyperparametersVis(object):
-    def __init__(self, trials: list, space: dict):
+    def __init__(self, trials: Trials, space: dict):
         self.trials = trials
         self.space = space
         self.extracted_params = [x['misc']['vals'] for x in self.trials.trials]

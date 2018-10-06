@@ -1,10 +1,10 @@
 from distutils.core import setup
 
 setup(
-    name='xg_vis',
+    name='hyperboost',
     version='0.1',
-    packages=['xg_vis', 'sklearn', 'numpy', 'xgboost', 'hyperopt', 'matplotlib', 'seaborn', 'pandas'],
+    packages=['hyperboost'],
     license='Open-source',
-    long_description=open('README.md').read(), requires=['matplotlib', 'hyperopt', 'seaborn', 'pandas', 'scikit-learn',
-                                                         'xgboost', 'numpy']
+    long_description=open('README.md').read(),
+    install_requires=['matplotlib', 'hyperopt', 'seaborn', 'pandas', 'scikit-learn', 'xgboost', 'numpy']
 )

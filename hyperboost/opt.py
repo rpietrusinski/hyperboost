@@ -9,8 +9,9 @@ from sklearn.model_selection import KFold
 
 class HyperparametersOptimizer(object):
     def __init__(self, x: np.ndarray, y: np.ndarray, path: str):
-        """Object of class HyperparametersOptimizer performs XGBoost's hyperparameters optimization using the Hyperopt's Tree Parzen
-        Estimators. During each iteration the 5-fold cross-validation is performed and the algorithm optimizes test AUC.
+        """Object of class HyperparametersOptimizer performs XGBoost's hyperparameters optimization using the Hyperopt's
+        Tree Parzen Estimators. During each iteration the 5-fold cross-validation is performed and the algorithm
+        optimizes test AUC.
 
         :param x: X data of type numpy ndarray
         :param y: y data of type numpy ndarray
@@ -30,7 +31,7 @@ class HyperparametersOptimizer(object):
         :return: Average auc
         """
         auc = []
-        for train_index, test_index in KFold(n_splits=5).split(self.x):
+        for train_index, test_index in KFold(n_splits=5, shuffle=True).split(self.x):
             train = xgb.DMatrix(self.x[train_index], self.y[train_index])
             test = xgb.DMatrix(self.x[test_index], self.y[test_index])
             model = xgb.train(params, train, 30)
@@ -66,5 +67,3 @@ class HyperparametersOptimizer(object):
             print("No experiment has been conducted!")
         else:
             return space_eval(space, self.trials.argmin)
-
-
