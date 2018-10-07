@@ -1,7 +1,11 @@
 # Hyperboost - XGBoost optimization with Hyperopt
 
 Package aims to improve optimization of XGBoost hyperparameters. It uses Bayesian Optimization approach, in particular
-the loss function approximation with Tree Parzen Estimators from Hyperopt.   
+the loss function approximation with Tree Parzen Estimators from Hyperopt.  
+<br>
+Package contains two modules:
+- hyperboost.opt - implements optimization of cross-validated AUC
+- hyperboost.vis - implements a set of performance plots    
 
 ##### Install:
 `
