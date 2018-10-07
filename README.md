@@ -23,8 +23,8 @@ y = data['target']
 y = np.array([int(y==2) for y in y])
 
 # parameter space
-space = {'eta': hp.choice('eta', np.arange(0.001, 0.3, 0.001)),
-          'gamma': hp.choice('gamma', np.arange(0, 100, 1)),
+space = {'eta': hp.uniform('eta', 0.001, 0.5),
+          'gamma': hp.uniform('gamma', 0, 100),
           'max_depth': hp.choice('max_depth', np.arange(1, 9, 1)),
           'objective': hp.choice('objective', ['binary:logistic']),
           'eval_metric': hp.choice('eval_metric',['auc']),
@@ -40,7 +40,5 @@ best = optimizer.opt_params(space)
 
 # visualize search
 vis = HyperparametersVis(optimizer.trials, space)
-vis.numeric_plots('eta')
-vis.numeric_plots('gamma')
-vis.object_plots('booster')
+vis.make_plots()
 ```
