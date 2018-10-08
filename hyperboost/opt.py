@@ -34,7 +34,7 @@ class HyperparametersOptimizer(object):
         for train_index, test_index in KFold(n_splits=5, shuffle=True).split(self.x):
             train = xgb.DMatrix(self.x[train_index], self.y[train_index])
             test = xgb.DMatrix(self.x[test_index], self.y[test_index])
-            model = xgb.train(params, train, 30)
+            model = xgb.train(params, train)
 
             preds = model.predict(test)
             auc.append(roc_auc_score(test.get_label(), preds))

@@ -32,7 +32,8 @@ space = {'eta': hp.uniform('eta', 0.001, 0.5),
           'max_depth': hp.choice('max_depth', np.arange(1, 9, 1)),
           'objective': hp.choice('objective', ['binary:logistic']),
           'eval_metric': hp.choice('eval_metric',['auc']),
-          'booster': hp.choice('booster', ['gbtree','gblinear','dart'])
+          'booster': hp.choice('booster', ['gbtree','gblinear','dart']),
+          'n_estimators': hp.quniform('n_estimators', 1, 300, 1)
           }
 
 # run experiment          
